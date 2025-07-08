@@ -8,7 +8,6 @@ import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'task_viewmodels.freezed.dart';
-
 part 'task_viewmodels.g.dart';
 
 /// Represents the state of the task list UI, managed by [TaskListViewModel].

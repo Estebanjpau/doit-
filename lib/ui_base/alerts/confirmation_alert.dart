@@ -2,6 +2,32 @@ import 'package:doit/core/design_system/text_styles.dart';
 import 'package:doit/core/types/types.dart';
 import 'package:flutter/material.dart';
 
+/// Custom `AlertDialog` to handle confirmation actions..
+///
+/// It's designed to be flexible, changing its icon and color scheme based on the
+/// provided `StatusType` (e.g., a warning icon for a delete action).
+///
+/// [title] text of the dialog.\
+/// [content] message shown below the title.\
+/// [onConfirm] callback function that gets executed when the user presses the confirm button.\
+/// [confirmText] text for the confirmation button. Defaults to 'Confirmar'.\
+/// [type] typeStatus of alert, which determines the icon and color scheme.
+///
+/// ### Example
+///
+/// ```dart
+/// showDialog(
+///   context: context,
+///   builder: (_) => ConfirmationAlert(
+///     title: 'Confirm',
+///     content: 'Are you sure you want to proceed?',
+///     type: StatusType.warning,
+///     onConfirm: () {
+///       // Your logic here...
+///     },
+///   ),
+/// );
+/// ```
 class ConfirmationAlert extends StatelessWidget {
   final String title;
   final String content;
