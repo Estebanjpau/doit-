@@ -17,7 +17,7 @@ class Tasks extends Table {
 
 @DriftAccessor(tables: [Tasks])
 class TasksDao extends DatabaseAccessor<AppDatabase> with _$TasksDaoMixin {
-  TasksDao(AppDatabase db) : super(db);
+  TasksDao(super.db);
 
   Stream<List<Task>> watchAllTasks() => select(tasks).watch();
   Future<void> insertTask(Task task) => into(tasks).insert(task);

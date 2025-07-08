@@ -1,8 +1,7 @@
 import 'package:doit/feature/task/domain/entities/task.dart';
 import 'package:doit/feature/task/domain/repositories/task_repository.dart';
 
-///Create method | (Create)RUD
-
+///Create method | Create (C from -> CRUD)
 class AddTaskUsecase {
   final TaskRepository repository;
 
@@ -12,7 +11,7 @@ class AddTaskUsecase {
     if (title.trim().isEmpty) {
       throw ArgumentError('El título no puede estar vacío.');
     }
-    final newTask = Task.createNew(title: title);
+    final newTask = TaskEntity.createNew(title: title);
     return repository.addTask(newTask);
   }
 }

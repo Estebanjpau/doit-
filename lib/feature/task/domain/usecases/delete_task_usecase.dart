@@ -1,7 +1,6 @@
 import 'package:doit/feature/task/domain/repositories/task_repository.dart';
 
-///Delete method | CRU(Delete)
-
+///Delete method | Delete (D from -> CRUD)
 class DeleteTaskUsecase {
   final TaskRepository repository;
 

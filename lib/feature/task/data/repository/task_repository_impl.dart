@@ -1,18 +1,19 @@
+import 'package:doit/feature/task/data/datasources/local/task_local_datasource_impl.dart';
 import 'package:doit/feature/task/domain/repositories/task_repository.dart';
 import '../../domain/entities/task.dart';
 
 class TaskRepositoryImpl implements TaskRepository {
-  final TaskRepository localDataSource;
+  final TaskLocalDataSource localDataSource;
 
   TaskRepositoryImpl({required this.localDataSource});
 
   @override
-  Future<void> addTask(Task task) {
+  Future<void> addTask(TaskEntity task) {
     return localDataSource.addTask(task);
   }
 
   @override
-  Future<void> updateTask(Task task) {
+  Future<void> updateTask(TaskEntity task) {
     return localDataSource.updateTask(task);
   }
 
@@ -22,7 +23,7 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Stream<List<Task>> getAllTasks() {
-    return localDataSource.getAllTasks();
+  Stream<List<TaskEntity>> watchAllTasks() {
+    return localDataSource.watchAllTasks();
   }
 }

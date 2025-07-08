@@ -1,19 +1,24 @@
 // feature/task/data/datasources/local/task_local_datasource_impl.dart
 
-import 'package:doit/core/data/database/app_database.dart' as db;
+import 'package:doit/core/database/app_database.dart' as db;
 import 'package:doit/feature/task/domain/entities/task.dart';
-import 'i_task_local_datasource.dart';
 
-class TaskLocalDataSourceImpl implements ITaskLocalDataSource {
+abstract class TaskLocalDataSource {
+  Stream<List<TaskEntity>> watchAllTasks();
+  Future<void> addTask(TaskEntity task);
+  Future<void> updateTask(TaskEntity task);
+  Future<void> deleteTask(String id);
+}
+
+class TaskLocalDataSourceImpl implements TaskLocalDataSource {
   final db.TasksDao _tasksDao;
 
   TaskLocalDataSourceImpl(this._tasksDao);
 
   @override
-  Stream<List<Task>> watchAllTasks() {
+  Stream<List<TaskEntity>> watchAllTasks() {
     return _tasksDao.watchAllTasks().map((dbTasks) {
-      // Mapea del modelo de Drift a la entidad del Dominio
-      return dbTasks.map((dbTask) => Task(
+      return dbTasks.map((dbTask) => TaskEntity(
         id: dbTask.id,
         title: dbTask.title,
         isCompleted: dbTask.isCompleted,
@@ -22,14 +27,13 @@ class TaskLocalDataSourceImpl implements ITaskLocalDataSource {
   }
 
   @override
-  Future<void> addTask(Task task) {
-    // Mapea de la entidad del Dominio al modelo de Drift
+  Future<void> addTask(TaskEntity task) {
     final dbTask = db.Task(id: task.id, title: task.title, isCompleted: task.isCompleted);
     return _tasksDao.insertTask(dbTask);
   }
 
   @override
-  Future<void> updateTask(Task task) {
+  Future<void> updateTask(TaskEntity task) {
     final dbTask = db.Task(id: task.id, title: task.title, isCompleted: task.isCompleted);
     return _tasksDao.updateTask(dbTask);
   }
