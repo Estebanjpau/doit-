@@ -94,6 +94,11 @@ lib/\
 │           ├── viewmodels/*     - ViewModels que gestionan el estado de la UI\
 │           └── widgets/*        - Widgets reutilizables\
 │\
+## Modulo ui_base
+>En este modulo desarrollamos la componetización de todos los Widgets que sean utilizados en todos los modulos o features generados, dónde alojariamos los buttons, textfields, select, checkboxes adaptados con diseños y lógica especifica. 
+
+├── ui_base/*                    - \
+│\
 └── main.dart                   - Punto de entrada de la aplicación
 
 ---
@@ -147,6 +152,20 @@ Ejecuta la aplicación:
 ```
 $ flutter run
 ```
+
+### Consideraciones
+La aplicación utiliza dependencias con actualizaciones recientes, por lo que para la ejecución de la misma desde plataformas como `Android Studio`, requiere la instalación la versión de nkd `"27.0.12077973"` en su sistema.
+
+![image](https://github.com/user-attachments/assets/d1778d98-605b-41a3-b81e-8d3359f64fca)
+
+
+---
+
+## 📷Capturas de pantalla
+![image](https://github.com/user-attachments/assets/201bdb69-aade-45cc-81da-406dae2799b7)
+![image](https://github.com/user-attachments/assets/f5e722f3-d333-4ab4-bfbf-a47b692b4fdc)
+![image](https://github.com/user-attachments/assets/d14493cc-053b-4b6b-b16b-e6ba21aa4bdf)
+
 
 ---
 
